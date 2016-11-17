@@ -39,6 +39,16 @@ class TestLace(unittest.TestCase):
                          0.15,
                          0.35)
         assert(len(aftermorph)==len(aftercliff) and aftermorph[0] != aftercliff[0])
-
+    
+        lace1res = lace.lace1(self.header,
+                              self.data,
+                              ['ADM_RATE', 'SAT_AVG', 'TUITFTE', 'RET_FT4', 'PCTFLOAN', 'PCTPELL', 'DEBT_MDN', 'C150_4', 'CDR3'],
+                              'mn_earn_wne_p7',
+                              False,
+                              0.3,
+                              0.15,
+                              0.3)
+        assert(len(lace1res) < len(self.data)*0.5 and lace1res not in self.data)
+    
     def tearDown(self):
         pass

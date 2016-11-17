@@ -113,6 +113,8 @@ def MORPH(attribute_names,
             if attr in independent_attrs:
                 row.append(x[tmp])
                 tmp += 1
+            elif attr == objective_attr:
+                row.append(toolkit.str2num(dm[attri]))
             else:
                 row.append(dm[attri])
         res.append(row)
