@@ -3,10 +3,7 @@ LACE
 ===============================
 
 .. image:: https://img.shields.io/travis/ginfung/LACE.svg
-        :target: https://travis-ci.org/ginfung/LACE
-
-.. image:: https://img.shields.io/pypi/v/LACE.svg
-        :target: https://pypi.python.org/pypi/LACE
+        :target: https://travis-ci.org/Ginfung/LACE.svg?branch=master
 
 
  Lace-scale Assurance of Confidentiality Environment
@@ -17,4 +14,6 @@ LACE
 Features
 --------
 
-* TODO
+* MORPH
+* CLIFF
+* LACE1
