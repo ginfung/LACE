@@ -30,5 +30,15 @@ class TestLace(unittest.TestCase):
                    0.3)
         assert(len(aftercliff) < 500, "It seems the CLIFF did not prune the data!")
 
+        aftermorph = lace.MORPH(self.header,
+                         aftercliff,
+                         ['ADM_RATE', 'SAT_AVG', 'TUITFTE', 'RET_FT4', 'PCTFLOAN', 'PCTPELL', 'DEBT_MDN', 'C150_4', 'CDR3'],
+                         'mn_earn_wne_p7',
+                         False,
+                         False,
+                         0.15,
+                         0.35)
+        assert(len(aftermorph)==len(aftercliff) and aftermorph[0] != aftercliff[0])
+
     def tearDown(self):
         pass

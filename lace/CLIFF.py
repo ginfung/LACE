@@ -26,7 +26,6 @@ import copy
 import logging
 import random
 import toolkit
-import pdb
 
 __author__ = "Jianfeng Chen"
 __copyright__ = "Copyright (C) 2016 Jianfeng Chen"
@@ -61,8 +60,8 @@ def power(L, C, Erange):
 
         powerc = []
         for u, v in zip(E[0:-1], E[1:]):  # checking the range (u,v]
-            like_first = sum([1 for i in first if u < L[i] <= v])/len(first) * p_first
-            like_rest = sum([1 for i in rest if u < L[i] <= v])/len(rest) * p_rest
+            like_first = sum([1 for i in first if u < L[i] <= v]) / len(first) * p_first
+            like_rest = sum([1 for i in rest if u < L[i] <= v]) / len(rest) * p_rest
             try:
                 powerc.append((like_first ** 2 / (like_first + like_rest)))
             except ZeroDivisionError:
@@ -74,7 +73,7 @@ def power(L, C, Erange):
     for l, c in zip(L, C):
         for e_cursor in range(len(E)):
             if E[e_cursor] >= l: break
-        power.append(round(power_table[c][e_cursor-1], 2))
+        power.append(round(power_table[c][e_cursor - 1], 2))
 
     return power
 
@@ -94,7 +93,7 @@ def cliff_core(data, percentage, obj_as_binary):
     classes = map(toolkit.str2num, zip(*data)[-1])
 
     if obj_as_binary:
-        classes = [1 if i>0 else 0 for i in classes]
+        classes = [1 if i > 0 else 0 for i in classes]
     else:
         classes = toolkit.apply_bin_range(classes)
 
@@ -115,13 +114,13 @@ def cliff_core(data, percentage, obj_as_binary):
     for cls in set(classes):
         matched = filter(lambda z: z[1] == cls, zips)
         random.shuffle(matched)
-        matched = sorted(matched, key=lambda z:z[2], reverse=True)
+        matched = sorted(matched, key=lambda z: z[2], reverse=True)
 
         if len(matched) < 5:
             output.extend([m[3] for m in matched])  # all saved
             continue
 
-        for i in range(int(len(matched)*percentage)):
+        for i in range(int(len(matched) * percentage)):
             output.append(matched[i][3])
     return sorted(output)
 
@@ -131,34 +130,35 @@ def CLIFF(attribute_names,
           independent_attrs,
           objective_attr,
           objective_as_binary=False,
-          CLIFF_percentage = 0.4):
+          cliff_percentage=0.4):
     """
     Core function for CLIFF algorithm
     prune the data set according to the power
-    attributes are discretized
+    attributes are discrete
 
     :param attribute_names: The attribute names. This should match the data_matrix
     :param data_matrix: the data to trim
+    :param independent_attrs: set up the independent attributes in the dataset. Note: 'name', 'id', etc. might not be
+        considered as independent attributes
     :param objective_attr: marking which attribute is the objective to be considered
-    :param objective_as_binary: signal to set up whether treat the objective as a binary attribute. By default, it is False
-    :param CLIFF_percentage: set up how many records to be remained. By default, it is 0.4
+    :param objective_as_binary: signal to set up whether treat the objective as a binary attribute. Default: False
+    :param cliff_percentage: set up how many records to be remained. By default, it is 0.4
     :return: The survived (valued) records
     """
     ori_attrs, alldata = attribute_names, data_matrix  # load the database
 
-    alldataT = map(list, zip(*alldata))
-    valued_dataT = list()
-    for attr, col in zip(ori_attrs, alldataT):
+    alldata_t = map(list, zip(*alldata))
+    valued_data_t = list()
+    for attr, col in zip(ori_attrs, alldata_t):
         if attr in independent_attrs:
-            valued_dataT.append(col)
-    valued_dataT.append(alldataT[attribute_names.index(objective_attr)])  # cant miss the classification
+            valued_data_t.append(col)
+    valued_data_t.append(alldata_t[attribute_names.index(objective_attr)])  # cant miss the classification
 
-    alldata = map(list, zip(*valued_dataT))
+    alldata = map(list, zip(*valued_data_t))
     alldata = map(lambda row: map(toolkit.str2num, row), alldata)  # numbering the 2d table
 
-    after_cliff = cliff_core(alldata, CLIFF_percentage, objective_as_binary)
+    after_cliff = cliff_core(alldata, cliff_percentage, objective_as_binary)
 
     res = [data_matrix[i] for i in after_cliff]
 
     return res
-
