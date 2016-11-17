@@ -1,9 +1,6 @@
 from __future__ import division
-import csv
 import random
 import math
-import pdb
-import copy
 import toolkit
 
 __author__ = "Jianfeng Chen"
