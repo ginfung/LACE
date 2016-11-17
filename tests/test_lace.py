@@ -9,17 +9,26 @@ Tests for `lace` module.
 """
 
 import unittest
-
+import csv
 import lace
 
-
 class TestLace(unittest.TestCase):
-
     def setUp(self):
-        pass
+        with open('tests/sample_data/school.csv', 'r') as f:
+            reader = csv.reader(f)
+            self.header = next(reader)
+            self.data = list()
+            for line in reader:
+                self.data.append(line)
 
     def test_something(self):
-        assert(lace.__version__)
+        aftercliff = lace.CLIFF(self.header,
+                   self.data,
+                   ['ADM_RATE', 'SAT_AVG', 'TUITFTE', 'RET_FT4', 'PCTFLOAN', 'PCTPELL', 'DEBT_MDN', 'C150_4', 'CDR3'],
+                   'mn_earn_wne_p7',
+                   False,
+                   0.3)
+        assert(len(aftercliff) < 500, "It seems the CLIFF did not prune the data!")
 
     def tearDown(self):
         pass
