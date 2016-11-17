@@ -3,7 +3,7 @@ LACE
 ===============================
 
 .. image:: https://travis-ci.org/Ginfung/LACE.svg?branch=master
-        :target: https://travis-ci.org/ginfung/LACE
+        :target: https://travis-ci.org/Ginfung/LACE
 
 .. image:: https://img.shields.io/pypi/v/LACE.svg
         :target: https://pypi.python.org/pypi/LACE
