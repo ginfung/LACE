@@ -23,7 +23,7 @@ How to use?
 
 Bibtex
 -------
-.. code-block:: html
-   :linenos:
+Add logging statements::
 
-   <h1>code block example</h1>
+  from nova.openstack.common import log as logging
+  LOG = logging.getLogger(__name__)
