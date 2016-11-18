@@ -16,16 +16,15 @@ LACE
 
 
 What is LACE?
---------
+-------------
 
 How to use?
---------
-
+-----------
 
 Bibtex
 -------
-.. code-block:: bibtex
-	:linenos:
+::
+
 	@inproceedings{peters2015lace2,
 	  title={LACE2: better privacy-preserving data sharing for cross project defect prediction},
 	  author={Peters, Fayola and Menzies, Tim and Layman, Lucas},
@@ -35,6 +34,8 @@ Bibtex
 	  organization={IEEE Press}
 	}
 
+::
+    
 	@article{peters2013balancing,
 	  title={Balancing privacy and utility in cross-company defect prediction},
 	  author={Peters, Fayola and Menzies, Tim and Gong, Liang and Zhang, Hongyu},
