@@ -23,7 +23,6 @@ How to use?
 
 Bibtex
 -------
-.. code-block:: python
-   :linenos:
-
-   print 'Hello World!'
+``
+123
+``
