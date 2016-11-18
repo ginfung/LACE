@@ -78,7 +78,7 @@ def power(L, C, Erange):
     return power
 
 
-def cliff_core(data, percentage, obj_as_binary):
+def cliff_core(data, percentage, obj_as_binary, handled_obj=False):
     """
     data has no header, only containing the record attributes
     :return the cliffed data INDICES(part of the input data)
@@ -86,16 +86,17 @@ def cliff_core(data, percentage, obj_as_binary):
 
     if len(data) < 50:
         logging.debug("no enough data to cliff. return the whole dataset")
-        return data
+        return range(len(data))
 
     # percentage /= 100 if percentage > 1 else 1
 
     classes = map(toolkit.str2num, zip(*data)[-1])
 
-    if obj_as_binary:
-        classes = [1 if i > 0 else 0 for i in classes]
-    else:
-        classes = toolkit.apply_bin_range(classes)
+    if not handled_obj:
+        if obj_as_binary:
+            classes = [1 if i > 0 else 0 for i in classes]
+        else:
+            classes = toolkit.apply_bin_range(classes)
 
     data_power = list()  # will be 2D list (list of list)
 

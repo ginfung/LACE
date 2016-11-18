@@ -27,6 +27,8 @@ def median(l):
     l WILL NOT be changed.
     :param l:
     :return:
+    >>> median([4,2,2,2,1,1,1,1,1,1,1,1,1])
+    1
     """
     return sorted(l)[int(len(l)/2)]
 
@@ -51,6 +53,7 @@ def binrange(data_list, enough=None, cohen=0.2, maxBins=16, minBin=4, trivial=1.
 
 
 def apply_bin_range(datalist, enough=None, cohen=0.2, maxBins=16, minBin=4, trivial=1.05):
+    if len(datalist) == 0: return datalist
     range_divide = binrange(datalist, enough, cohen, maxBins, minBin, trivial)
     x = list()
     m = min(datalist)
@@ -60,7 +63,7 @@ def apply_bin_range(datalist, enough=None, cohen=0.2, maxBins=16, minBin=4, triv
         if i == m:
             x.append(0)
         elif i == M:
-            x.append(len(range_divide)-1)
+            x.append(len(range_divide)-2)
         else:
             for m, p in enumerate(range_divide[:-1]):
                 if p > i: break

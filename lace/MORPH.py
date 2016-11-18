@@ -6,12 +6,12 @@ import toolkit
 __author__ = "Jianfeng Chen"
 __copyright__ = "Copyright (C) 2016 Jianfeng Chen"
 __license__ = "MIT"
-__version__ = "2.0"
+__version__ = "2.2"
 __email__ = "jchen37@ncsu.edu"
 
 
 """
-MORPH is an instance mutator that "shake" the data while maintain the data attributes. GOAL: the MORPHed data
+morph is an instance mutator that "shake" the data while maintain the data attributes. GOAL: the MORPHed data
     can be learned by other data-mining techniques as well as the original data.
 
 Version 1.0--Reference: Peters, Fayola, et al. "Balancing privacy and utility in cross-company defect prediction."
@@ -19,7 +19,25 @@ Software Engineering, IEEE Transactions on 39.8 (2013): 1054-1068.
 """
 
 
-def MORPH(attribute_names,
+def simplify_morph(data, alpha, beta):
+    """
+    same as MOPRH. But require
+    1) data is handled, no header, class at last column
+    2) data has been normalized
+    """
+    classes = map(list, zip(*data))[-1]
+    data = [i for i in data]
+
+    for row_index, row in enumerate(data):  # for each row
+        heterogeneous_index = [i for i in range(len(classes)) if classes[i] != classes[row_index]]
+        boundary_dist = min([toolkit.euclidean_dist(row, data[heg]) for heg in heterogeneous_index])
+        boundary_dist /= math.sqrt(len(data[0])-2)
+        for i in range(len(row)):
+            data[row_index][i] += boundary_dist * random.uniform(alpha, beta) * random.choice([1, -1])  # shake
+    return data
+
+
+def morph(attribute_names,
           data_matrix,
           independent_attrs,
           objective_attr,
@@ -28,7 +46,7 @@ def MORPH(attribute_names,
           alpha=0.15,
           beta=0.35):
     """
-    MORPH is a instance mutation which can shake the instance within the class boundary
+    morph is a instance mutation which can shake the instance within the class boundary
     :param attribute_names: the names of attributes, should match the data_matrix
     :param data_matrix: original data
     :param independent_attrs: set up the independent attributes in the dataset. Note: 'name', 'id', etc. might not be
@@ -41,10 +59,10 @@ def MORPH(attribute_names,
     :return:
     """
 
-    datasetT = map(list, zip(*data_matrix))
+    dataset_t = map(list, zip(*data_matrix))
     dataset = list()
     classes = list()
-    for d, a in zip(datasetT, attribute_names):
+    for d, a in zip(dataset_t, attribute_names):
         if a in independent_attrs:
             dataset.append(d)
         if a == objective_attr:
@@ -98,10 +116,10 @@ def MORPH(attribute_names,
             if is_int[attr_index]:
                 dataset[attr_index][i] = int(round(dataset[attr_index][i]))  # rounding when needed
             else:
-                dataset[attr_index][i] = round(dataset[attr_index][i],4)
+                dataset[attr_index][i] = round(dataset[attr_index][i], 4)
     morphed = map(list, zip(*dataset))  # recover to the original mode and finish.
 
-    '''!!MORPH done!!'''
+    '''!!morph done!!'''
     if data_has_normalized:
         morphed = morphed[:-2]
 
