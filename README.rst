@@ -23,7 +23,7 @@ How to use?
 
 Bibtex
 -------
-Add logging statements::
+::
 
 	@inproceedings{peters2015lace2,
 	  title={LACE2: better privacy-preserving data sharing for cross project defect prediction},
@@ -33,6 +33,9 @@ Add logging statements::
 	  year={2015},
 	  organization={IEEE Press}
 	}
+
+::
+    
 	@article{peters2013balancing,
 	  title={Balancing privacy and utility in cross-company defect prediction},
 	  author={Peters, Fayola and Menzies, Tim and Gong, Liang and Zhang, Hongyu},
