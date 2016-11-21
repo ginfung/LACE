@@ -24,7 +24,7 @@ class TestLace(unittest.TestCase):
 
     def test_something(self):
         # testing cliff
-        aftercliff = lace.CLIFF(self.header,
+        aftercliff = lace.cliff(self.header,
                    self.data,
                    ['ADM_RATE', 'SAT_AVG', 'TUITFTE', 'RET_FT4', 'PCTFLOAN', 'PCTPELL', 'DEBT_MDN', 'C150_4', 'CDR3'],
                    'mn_earn_wne_p7',
