@@ -17,6 +17,9 @@ LACE
 
 What is LACE?
 -------------
+LACE, or Large-scale Assurance Configuration Environment, was firsed introduced by Dr. Peters in ICSE2013. In a short, LACE is a data preprocess algorithm. It can help user to remove the sensitive information and implicit association rules inside the date sets, while keep the utility of the data sets, typically for machine learning or big data mining. In our published articiles, we used the data to train learning models and do the prediction.
+
+There are two versions of LACE at this time. The first version, or *lace1* is 
 
 How to use?
 -----------
