@@ -23,7 +23,7 @@ There are two versions of LACE at this time. The first version, or *lace1* is co
 
 The second version of LACE, or lace2, assumes there is a bin which contains the privatized data set from other people or insititutions. And lace2 can allow the user to determine what he or she should add to the bin so that it can improve the diversity of the bin. To pratitize the data, MORPH is also used in lace2.
 
-To explore more details of the lace1 and lace2, please see the two papers listed in **Bibtex**
+To explore more details of the lace1 and lace2, please see the two papers listed in **Bibtex**.
 
 
 How to use?
