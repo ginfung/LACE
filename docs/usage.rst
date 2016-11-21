@@ -106,11 +106,11 @@ Here we have a complete simple example to propess the `data
 ::
 
 	with open('tests/sample_data/school.csv', 'r') as f:
-    reader = csv.reader(f)
-    header = next(reader)
-    data = list()
-    for line in reader:
-        data.append(line)
+	    reader = csv.reader(f)
+	    header = next(reader)
+	    data = list()
+	    for line in reader:
+	        data.append(line)
 
 	attribute_names = header
 	data_matrix = data
