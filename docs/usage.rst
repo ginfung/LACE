@@ -123,7 +123,7 @@ Here we have a complete simple example to propess the `data
 
 
 	lace1res = lace.lace1(attribute_names, data_matrix, independent_attrs, objective_attr, False, 0.4, 0.15,0.35)
-	assert(len(lace1res) < len(data)*0.5 and lace1res not in data)
+	assert(len(lace1res) < len(data)*0.5)
 	        
 	bins = [header] + data[:50]
 	try2add_data_matrix = data[200:700]
