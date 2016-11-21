@@ -116,7 +116,7 @@ Here we have a complete simple example to propess the `data
 	independent_attrs = ['ADM_RATE', 'SAT_AVG', 'TUITFTE', 'RET_FT4', 'PCTFLOAN', 'PCTPELL', 'DEBT_MDN', 'C150_4', 'CDR3']
 	objective_attr = 'mn_earn_wne_p7'
 
-	aftercliff = lace.CLIFF(attribute_names, data_matrix, independent_attrs, objective_attr, False, 0.4)
+	aftercliff = lace.cliff(attribute_names, data_matrix, independent_attrs, objective_attr, False, 0.4)
 	assert(len(aftercliff) < 500)
 	    
 	aftermorph = lace.morph(attribute_names, data_matrix, independent_attrs, objective_attr, False, False, 0.15, 0.35)
