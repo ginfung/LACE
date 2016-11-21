@@ -9,7 +9,7 @@ __email__ = "jchen37@ncsu.edu"
 
 
 """
-LACE1 means CLIFF + morph
+LACE1 means cliff + morph
 This file is the control flow of LACE1.
 Given the dataset, return the result of LACE1.
 """
@@ -36,8 +36,8 @@ def lace1(attribute_names,
     :param beta: parameter 2 in morph, defining the shaking degree
     :return:
     """
-    after_cliff = CLIFF(attribute_names, data_matrix, independent_attrs,
-                       objective_attr,objective_as_binary, cliff_percentage)
+    after_cliff = cliff(attribute_names, data_matrix, independent_attrs,
+                        objective_attr, objective_as_binary, cliff_percentage)
     res = morph(attribute_names, after_cliff, independent_attrs,
                 objective_attr, objective_as_binary, False, alpha, beta)
     return res

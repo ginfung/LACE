@@ -4,12 +4,13 @@ Usage
 
 To use LACE in a project::
 
-    import lace
+    import lace # or
+    from lace import cliff, morph, lace1, add_to_bin, lace2_simulator
 
 
 The CLIFF func::
 	
-	CLIFF(attribute_names, data_matrix, independent_attrs, objective_attr, objective_as_binary=False, cliff_percentage=0.4)
+	cliff(attribute_names, data_matrix, independent_attrs, objective_attr, objective_as_binary=False, cliff_percentage=0.4)
         
 :param attribute_names: the attribute names. This should match the data_matrix
 

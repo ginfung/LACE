@@ -34,7 +34,7 @@ __version__ = "2.0"
 __email__ = "jchen37@ncsu.edu"
 
 """
-CLIFF algorithm
+cliff algorithm
 Reference: Peters, Fayola, et al. "Balancing privacy and utility in cross-company defect prediction."
 Software Engineering, IEEE Transactions on 39.8 (2013): 1054-1068.
 """
@@ -126,14 +126,14 @@ def cliff_core(data, percentage, obj_as_binary, handled_obj=False):
     return sorted(output)
 
 
-def CLIFF(attribute_names,
+def cliff(attribute_names,
           data_matrix,
           independent_attrs,
           objective_attr,
           objective_as_binary=False,
           cliff_percentage=0.4):
     """
-    Core function for CLIFF algorithm
+    Core function for cliff algorithm
     prune the data set according to the power
     attributes are discrete
 
