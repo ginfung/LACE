@@ -99,9 +99,7 @@ LACE also provides a simple LACE2 application simulator. It automatically distri
     
 
 Here we have a complete simple example to propess the `data 
-<https://github.com/Ginfung/LACE/blob/master/tests/sample_data/school.csv>`_.
-
-*This data is from Data.Gov*
+<https://github.com/Ginfung/LACE/blob/master/tests/sample_data/school.csv>`_. *This data is from Data.Gov*
 
 ::
 
