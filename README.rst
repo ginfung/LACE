@@ -13,8 +13,8 @@ LACE
 
 * Free software: MIT license
 * Documentation: http://lace.readthedocs.io/en/latest/readme.html
-* Algorithm design: Dr. Fayola Peters @ Univ of Limerick, Ireland
-* Package development: Jianfeng Chen @ NC State Univ, United States
+* Algorithm design: `Dr. Fayola Peters<http://www.fayolapeters.com/>`_ @ Univ of Limerick, Ireland
+* Package development: `Jianfeng Chen<http://www4.ncsu.edu/~jchen37>`_ @ NC State Univ, United States
 
 
 What is LACE?
