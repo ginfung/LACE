@@ -25,15 +25,19 @@ test_requirements = [
 ]
 
 setup(
-    name='LACE',
-    version=versioneer.get_version(),
-    cmdclass=versioneer.get_cmdclass(),
+    name='lace',
+    # version=versioneer.get_version(),
+    # cmdclass=versioneer.get_cmdclass(),
+    version = '1.0.1',
+
     description=" Lace-scale Assurance of Confidentiality Environment",
     long_description=readme + '\n\n' + history,
     author="Jianfeng Chen",
     author_email='jchen37@ncsu.edu',
     url='https://github.com/ginfung/LACE',
+    
     packages=find_packages(exclude=['contrib', 'docs', 'tests']),
+
     entry_points={
         'console_scripts':[
             'LACE=lace.cli:cli',
@@ -43,7 +47,8 @@ setup(
     install_requires=requirements,
     license="MIT",
     classifiers=[
-        'Development Status :: 2 - Pre-Alpha',
+        'Development Status :: 4 - Beta',
+        'Topic :: Database', 
         'Intended Audience :: Developers',
         'License :: OSI Approved :: MIT License',
         'Natural Language :: English',
