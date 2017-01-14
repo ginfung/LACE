@@ -31,19 +31,6 @@ excluded = []
 if is_wheel:
     excluded.append('extlibs.future')
 
-def exclude_package(pkg):
-    for exclude in excluded:
-        if pkg.startswith(exclude):
-            return True
-    return False
-
-def create_package_list(base_package):
-    return ([base_package] +
-            [base_package + '.' + pkg
-             for pkg
-             in find_packages(base_package)
-             if not exclude_package(pkg)])
-
 
 setup(
     name='lace',
@@ -57,13 +44,13 @@ setup(
     author_email='jchen37@ncsu.edu',
     url='https://github.com/ginfung/LACE',
     
-    # packages=find_packages(exclude=['contrib', 'docs', 'tests']),
-    packages = create_package_list('lace'),
+    packages=find_packages(exclude=['contrib', 'docs', 'tests']),
     # entry_points={
     #     'console_scripts':[
     #         'LACE=lace.cli:cli',
     #         ],
     #     },
+    scripts=['lace/lace'],
     # include_package_data=True,
     install_requires=requirements,
     license="MIT",
