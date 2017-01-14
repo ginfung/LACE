@@ -58,7 +58,7 @@ setup(
     url='https://github.com/ginfung/LACE',
     
     # packages=find_packages(exclude=['contrib', 'docs', 'tests']),
-    packages = create_package_list('lace')
+    packages = create_package_list('lace'),
     # entry_points={
     #     'console_scripts':[
     #         'LACE=lace.cli:cli',
