@@ -50,7 +50,7 @@ setup(
     #         'LACE=lace.cli:cli',
     #         ],
     #     },
-    scripts=['lace/lace'],
+    scripts=['lace/'],
     # include_package_data=True,
     install_requires=requirements,
     license="MIT",
