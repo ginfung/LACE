@@ -12,7 +12,7 @@ LACE
  Lace-scale Assurance of Confidentiality Environment
 
 * Free software: MIT license
-* Documentation: http://lace.readthedocs.io/
+* Documentation: http://lace.readthedocs.io/en/latest/readme.html
 
 
 What is LACE?
