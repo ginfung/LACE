@@ -24,6 +24,27 @@ requirements = [
 test_requirements = [
 ]
 
+# The source dist comes with batteries included, the wheel can use pip to get the rest
+is_wheel = 'bdist_wheel' in sys.argv
+
+excluded = []
+if is_wheel:
+    excluded.append('extlibs.future')
+
+def exclude_package(pkg):
+    for exclude in excluded:
+        if pkg.startswith(exclude):
+            return True
+    return False
+
+def create_package_list(base_package):
+    return ([base_package] +
+            [base_package + '.' + pkg
+             for pkg
+             in find_packages(base_package)
+             if not exclude_package(pkg)])
+
+
 setup(
     name='lace',
     # version=versioneer.get_version(),
@@ -36,14 +57,14 @@ setup(
     author_email='jchen37@ncsu.edu',
     url='https://github.com/ginfung/LACE',
     
-    packages=find_packages(exclude=['contrib', 'docs', 'tests']),
-
-    entry_points={
-        'console_scripts':[
-            'LACE=lace.cli:cli',
-            ],
-        },
-    include_package_data=True,
+    # packages=find_packages(exclude=['contrib', 'docs', 'tests']),
+    packages = create_package_list('lace')
+    # entry_points={
+    #     'console_scripts':[
+    #         'LACE=lace.cli:cli',
+    #         ],
+    #     },
+    # include_package_data=True,
     install_requires=requirements,
     license="MIT",
     classifiers=[
