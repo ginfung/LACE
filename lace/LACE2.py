@@ -47,7 +47,7 @@ def add_to_bin(attribute_names,
         NOTE: the result must be assigned to another variable. The parameter pointer will NOT be changed
     """
     if passing_bin is not None:
-        assert(passing_bin[0] == attribute_names, "new added table should share the same table with existed BIN data")
+        assert passing_bin[0] == attribute_names, "new added table should share the same table with existed BIN data"
     else:
         passing_bin = [attribute_names]
 
