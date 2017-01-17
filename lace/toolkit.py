@@ -60,8 +60,6 @@ def apply_bin_range(datalist, enough=None, cohen=0.2, maxBins=16, minBin=4, triv
     for i in datalist:
         t = bisect_left(range_divide, i)
         x.append(t)
-    import pdb
-    pdb.set_trace()
     return x
 
 
