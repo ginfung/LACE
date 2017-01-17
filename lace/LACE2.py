@@ -129,9 +129,9 @@ def add_to_bin(attribute_names,
     if len(cache) == 0:
         print('oh-my-god')
         return passing_bin
-    
+
     cache_data = [my[i] for i in cache]
-    cache_data = MORPH.simplify_morph(cache_data, morph_alpha, morph_beta)
+    # cache_data = MORPH.simplify_morph(cache_data, morph_alpha, morph_beta)
 
     # remove normalization of cache
     cache_t = list()
