@@ -57,9 +57,12 @@ def add_to_bin(attribute_names,
     # prepare for the core independent+dependent dataset
     for attr in independent_attrs:
         col = zip(*try2add_data_matrix)[attribute_names.index(attr)]
+        col = map(toolkit.str2num, col)
         my.append(col)
+
         if len(passing_bin)>2:
             other_col = zip(*passing_bin[1:])[attribute_names.index(attr)]
+            other_col = map(toolkit.str2num, other_col)
             others.append(other_col)
 
     classes = zip(*try2add_data_matrix)[attribute_names.index(objective_attr)]
@@ -76,18 +79,18 @@ def add_to_bin(attribute_names,
 
     my.append(classes)
     others.append(other_classes)
-    a, b = min(classes+other_classes), max(classes+other_classes)  # for revealing the obejective
-    my = map(lambda col: map(toolkit.str2num, col), my)
+    a, b = min(classes+other_classes), max(classes+other_classes)  # for revealing the objective
     my = map(list, zip(*my))
 
     protected_line = copy.deepcopy(my[0])  # saving the data formats!
-    others = map(lambda col: map(toolkit.str2num, col), others)
     others = map(list, zip(*others))
-
+    import pdb
+    pdb.set_trace()
     # get the **important** LEAF distance
     fetch_num = min(len(my)+len(others), 100)
     sampled = random.sample(my+others, fetch_num)
     sampled = toolkit.normalize_cols_for_table([row[:-1] for row in sampled])
+
     inter_class_dist = LeaF.find_distinct_distance(sampled)
 
     # normalization process
@@ -125,7 +128,7 @@ def add_to_bin(attribute_names,
                 bins.append(my[test])
 
     cache_data = [my[i] for i in cache]
-    # cache_data = MORPH.simplify_morph(cache_data, morph_alpha, morph_beta)
+    cache_data = MORPH.simplify_morph(cache_data, morph_alpha, morph_beta)
 
     # remove normalization of cache
     cache_t = list()
