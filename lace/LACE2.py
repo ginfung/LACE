@@ -135,14 +135,14 @@ def add_to_bin(attribute_names,
     import pdb
     pdb.set_trace()
     # remove normalization of cache
-    cache_t = list()
-    for funi, col in enumerate(zip(*cache_data)[:-1]):
-        p = map(denorm_funcs[funi], col)
-        if type(protected_line[funi]) is not int:
-            p = [round(i, 4) for i in p]
-        else:
-            p = [int(i) for i in p]
-        cache_t.append(p)
+    # cache_t = list()
+    # for funi, col in enumerate(zip(*cache_data)[:-1]):
+    #     p = map(denorm_funcs[funi], col)
+    #     if type(protected_line[funi]) is not int:
+    #         p = [round(i, 4) for i in p]
+    #     else:
+    #         p = [int(i) for i in p]
+    #     cache_t.append(p)
 
     # rescale the objective col
     tmp = [toolkit.str2num(i[attribute_names.index(objective_attr)]) for i in try2add_data_matrix]
@@ -153,22 +153,24 @@ def add_to_bin(attribute_names,
         tmp = map(lambda x: int(x), tmp)
     else:
         tmp = map(lambda x: round(x, 4), tmp)
-    cache_t.append(tmp)
 
-    cache_data = map(list, zip(*cache_t))
 
-    care_attr_index = dict()
-    for i, a in enumerate(independent_attrs+[objective_attr]):
-        care_attr_index[a] = i
-
-    for line_number, toreplace in zip(cache, cache_data):
-        row = list()
-        for orgi, attr in enumerate(attribute_names):
-            if attr in care_attr_index:
-                row.append(toreplace[care_attr_index[attr]])
-            else:
-                row.append(try2add_data_matrix[line_number][orgi])
-        passing_bin.append(row)
+    # cache_t.append(tmp)
+    #
+    # cache_data = map(list, zip(*cache_t))
+    #
+    # care_attr_index = dict()
+    # for i, a in enumerate(independent_attrs+[objective_attr]):
+    #     care_attr_index[a] = i
+    #
+    # for line_number, toreplace in zip(cache, cache_data):
+    #     row = list()
+    #     for orgi, attr in enumerate(attribute_names):
+    #         if attr in care_attr_index:
+    #             row.append(toreplace[care_attr_index[attr]])
+    #         else:
+    #             row.append(try2add_data_matrix[line_number][orgi])
+    #     passing_bin.append(row)
 
     # making everything into string
     for recordi in range(len(passing_bin)):
