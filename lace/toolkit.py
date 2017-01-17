@@ -1,4 +1,5 @@
 from __future__ import division
+from bisect import bisect_left
 from stat_helper import a12s as a12rank
 import bins
 import csv
@@ -59,15 +60,18 @@ def apply_bin_range(datalist, enough=None, cohen=0.2, maxBins=16, minBin=4, triv
     m = min(datalist)
     M = max(datalist)
 
+    # for i in datalist:
+    #     if i == m:
+    #         x.append(0)
+    #     elif i == M:
+    #         x.append(len(range_divide)-2)
+    #     else:
+    #         for m, p in enumerate(range_divide[:-1]):
+    #             if p > i: break
+    #         x.append(m-1)
     for i in datalist:
-        if i == m:
-            x.append(0)
-        elif i == M:
-            x.append(len(range_divide)-2)
-        else:
-            for m, p in enumerate(range_divide[:-1]):
-                if p > i: break
-            x.append(m-1)
+        t = bisect_left(range_divide, i)
+        x.append(t)
     return x
 
 
