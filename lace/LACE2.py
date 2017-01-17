@@ -84,9 +84,6 @@ def add_to_bin(attribute_names,
 
     protected_line = copy.deepcopy(my[0])  # saving the data formats!
     others = map(list, zip(*others))
-    import pdb
-    # pdb.set_trace()
-    # get the **important** LEAF distance
 
     # normalization process
     norm_funcs, denorm_funcs = list(), list()
@@ -129,9 +126,12 @@ def add_to_bin(attribute_names,
             if LeaF.whether_add_to_private_cache(my[test], bins, inter_class_dist):
                 cache.append(test)
                 bins.append(my[test])
-
+    if len(cache) == 0:
+        print('oh-my-god')
+        return passing_bin
+    
     cache_data = [my[i] for i in cache]
-    # cache_data = MORPH.simplify_morph(cache_data, morph_alpha, morph_beta)
+    cache_data = MORPH.simplify_morph(cache_data, morph_alpha, morph_beta)
 
     # remove normalization of cache
     cache_t = list()
