@@ -87,13 +87,6 @@ def add_to_bin(attribute_names,
     import pdb
     # pdb.set_trace()
     # get the **important** LEAF distance
-    fetch_num = min(len(my)+len(others), 100)
-    sampled = random.sample(my+others, fetch_num)
-    sampled_obj = zip(*sampled)[-1]
-    sampled = toolkit.normalize_cols_for_table([row[:-1] for row in sampled])
-    sampled = [i+[j] for i, j in zip(sampled, sampled_obj)]
-
-    inter_class_dist = LeaF.find_distinct_distance(sampled)
 
     # normalization process
     norm_funcs, denorm_funcs = list(), list()
@@ -124,6 +117,14 @@ def add_to_bin(attribute_names,
 
         to_submits = CLIFF.cliff_core(my, cliff_percentage, objective_as_binary, handled_obj=True)
         bins = others
+
+        fetch_num = min(len(my) + len(others), 100)
+        sampled = random.sample(my + others, fetch_num)
+        sampled_obj = zip(*sampled)[-1]
+        sampled = toolkit.normalize_cols_for_table([row[:-1] for row in sampled])
+        sampled = [i + [j] for i, j in zip(sampled, sampled_obj)]
+
+        inter_class_dist = LeaF.find_distinct_distance(sampled)
         for test in to_submits:
             if LeaF.whether_add_to_private_cache(my[test], bins, inter_class_dist):
                 cache.append(test)
