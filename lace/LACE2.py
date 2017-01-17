@@ -125,14 +125,15 @@ def add_to_bin(attribute_names,
         for test in to_submits:
             if LeaF.whether_add_to_private_cache(my[test], bins, inter_class_dist):
                 cache.append(test)
-                bins.append(my[test])
+                # bins.append(my[test])
+
     if len(cache) == 0:
-        print('oh-my-god')
         return passing_bin
 
     cache_data = [my[i] for i in cache]
     # cache_data = MORPH.simplify_morph(cache_data, morph_alpha, morph_beta)
-
+    import pdb
+    pdb.set_trace()
     # remove normalization of cache
     cache_t = list()
     for funi, col in enumerate(zip(*cache_data)[:-1]):
