@@ -89,8 +89,10 @@ def add_to_bin(attribute_names,
     # get the **important** LEAF distance
     fetch_num = min(len(my)+len(others), 100)
     sampled = random.sample(my+others, fetch_num)
+    sampled_obj = zip(*sampled)[-1]
     sampled = toolkit.normalize_cols_for_table([row[:-1] for row in sampled])
-
+    sampled = [i+[j] for i, j in zip(sampled, sampled_obj)]
+    
     inter_class_dist = LeaF.find_distinct_distance(sampled)
 
     # normalization process
