@@ -57,21 +57,11 @@ def apply_bin_range(datalist, enough=None, cohen=0.2, maxBins=16, minBin=4, triv
     if len(datalist) == 0: return datalist
     range_divide = binrange(datalist, enough, cohen, maxBins, minBin, trivial)
     x = list()
-    m = min(datalist)
-    M = max(datalist)
-
-    # for i in datalist:
-    #     if i == m:
-    #         x.append(0)
-    #     elif i == M:
-    #         x.append(len(range_divide)-2)
-    #     else:
-    #         for m, p in enumerate(range_divide[:-1]):
-    #             if p > i: break
-    #         x.append(m-1)
     for i in datalist:
         t = bisect_left(range_divide, i)
         x.append(t)
+    import pdb
+    pdb.set_trace()
     return x
 
 
