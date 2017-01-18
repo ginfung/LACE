@@ -26,10 +26,12 @@ def simplify_morph(data, alpha, beta):
     2) data has been normalized
     """
     classes = map(list, zip(*data))[-1]
-    data = [i for i in data]
+
+    if len(set((classes))) == 1:
+        return data
 
     for row_index, row in enumerate(data):  # for each row
-        heterogeneous_index = [i for i in range(len(classes)) if classes[i] != classes[row_index]]
+        heterogeneous_index = [i for i in range(len(data)) if classes[i] != row[-1]]
         boundary_dist = min([toolkit.euclidean_dist(row, data[heg]) for heg in heterogeneous_index])
         boundary_dist /= math.sqrt(len(data[0])-2)
         for i in range(len(row)):

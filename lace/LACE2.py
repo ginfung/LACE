@@ -131,18 +131,7 @@ def add_to_bin(attribute_names,
         return passing_bin
 
     cache_data = [my[i] for i in cache]
-    # cache_data = MORPH.simplify_morph(cache_data, morph_alpha, morph_beta)
-    import pdb
-    pdb.set_trace()
-    # remove normalization of cache
-    # cache_t = list()
-    # for funi, col in enumerate(zip(*cache_data)[:-1]):
-    #     p = map(denorm_funcs[funi], col)
-    #     if type(protected_line[funi]) is not int:
-    #         p = [round(i, 4) for i in p]
-    #     else:
-    #         p = [int(i) for i in p]
-    #     cache_t.append(p)
+    cache_data = MORPH.simplify_morph(cache_data+others, morph_alpha, morph_beta)[:len(cache_data)]
 
     # rescale the objective col
     tmp = [toolkit.str2num(i[attribute_names.index(objective_attr)]) for i in try2add_data_matrix]
@@ -154,29 +143,27 @@ def add_to_bin(attribute_names,
     else:
         tmp = map(lambda x: round(x, 4), tmp)
 
+    for at, i in enumerate(cache):
+        h = try2add_data_matrix[i]
+        new = cache_data[at]
+        new2 = [func(d) for func, d in zip(denorm_funcs, new)]
+        new = new2
+        c = tmp[at]
 
-    # cache_t.append(tmp)
-    #
-    # cache_data = map(list, zip(*cache_t))
-    #
-    # care_attr_index = dict()
-    # for i, a in enumerate(independent_attrs+[objective_attr]):
-    #     care_attr_index[a] = i
-    #
-    # for line_number, toreplace in zip(cache, cache_data):
-    #     row = list()
-    #     for orgi, attr in enumerate(attribute_names):
-    #         if attr in care_attr_index:
-    #             row.append(toreplace[care_attr_index[attr]])
-    #         else:
-    #             row.append(try2add_data_matrix[line_number][orgi])
-    #     passing_bin.append(row)
-
-    # making everything into string
-    for recordi in range(len(passing_bin)):
-        record = passing_bin[recordi]
-        passing_bin[recordi] = map(str, record)
-
+        row = list()
+        new_c = 0
+        for h_c, attr in enumerate(attribute_names):
+            if attr == objective_attr:
+                row.append(c)
+                continue
+            if attr in independent_attrs:
+                row.append(new[new_c])
+                new_c += 1
+                continue
+            else:
+                row.append(h[h_c])
+        row = map(str, row)
+        passing_bin.append(row)
     return passing_bin
 
 
