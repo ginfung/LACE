@@ -24,7 +24,6 @@ def lace1(attribute_names,
           alpha=0.15,
           beta=0.35):
     """
-
     :param attribute_names: the names of attributes, should match the data_matrix
     :param data_matrix:  original data
     :param independent_attrs:  set up the independent attributes in the dataset. Note: 'name', 'id', etc. might not be

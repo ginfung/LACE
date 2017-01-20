@@ -79,7 +79,6 @@ def add_to_bin(attribute_names,
 
     my.append(classes)
     others.append(other_classes)
-    a, b = min(classes+other_classes), max(classes+other_classes)  # for revealing the objective
     my = map(list, zip(*my))
 
     protected_line = copy.deepcopy(my[0])  # saving the data formats!
@@ -131,18 +130,8 @@ def add_to_bin(attribute_names,
         return passing_bin
 
     cache_data = [my[i] for i in cache]
-    cache_obj  = [obj[i] for i in cache]
+    cache_obj = [obj[i] for i in cache]
     cache_data = MORPH.simplify_morph(cache_data+others, morph_alpha, morph_beta)[:len(cache_data)]
-
-    # # rescale the objective col
-    # tmp = [toolkit.str2num(i[attribute_names.index(objective_attr)]) for i in try2add_data_matrix]
-    # m, M = min(tmp), max(tmp)
-
-    # tmp = [m+(i-a)*(M-m)/(b-a) for i in zip(*cache_data)[-1]]
-    # if type(m) is int:
-    #     tmp = map(lambda x: int(x), tmp)
-    # else:
-    #     tmp = map(lambda x: round(x, 4), tmp)
 
     for at, i in enumerate(cache):
         h = try2add_data_matrix[i]
@@ -180,7 +169,6 @@ def lace2_simulator(attribute_names,
                     ):
     """
     This is a simulator. Distribute to the data to different members UNEQUALLY.
-    :param data_set:
     :return: list of list. each of list represent a data set holder by one person
     """
     data = copy.deepcopy(data_matrix)  # protect the original parameters
