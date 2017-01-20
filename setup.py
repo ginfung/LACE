@@ -19,7 +19,7 @@ requirements = [
 
 setup(
     name = 'lace',
-    version = '1.0.1',
+    version = '2.0.1',
 
     author = 'Jianfeng Chen',
     author_email = 'jchen37@ncsu.edu',

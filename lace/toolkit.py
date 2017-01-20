@@ -12,6 +12,7 @@ __email__ = "jchen37@ncsu.edu"
 
 
 def str2num(s):
+    if type(s) == float or type(s) == int: return s
     try:
         s = int(s)
     except ValueError:
