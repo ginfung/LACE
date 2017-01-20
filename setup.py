@@ -2,7 +2,8 @@
 #!/usr/bin/env python
 # -*- coding: utf-8 -*-
 
-from distutils.core import setup
+# from distutils.core import setup
+from setuptools import setup
 from codecs import open
 from os import path
 
@@ -16,6 +17,8 @@ requirements = [
     'click',
     'numpy'
 ]
+
+test_requirements = []
 
 setup(
     name = 'lace',
@@ -43,4 +46,6 @@ setup(
         "Programming Language :: Python :: 2",
         'Programming Language :: Python :: 2.7',
     ],
-    )
+	test_suite = "tests",
+	tests_require=test_requirements,
+)
