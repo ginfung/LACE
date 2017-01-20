@@ -5,7 +5,6 @@ import LeaF
 import toolkit
 import random
 import copy
-import pdb
 
 __author__ = "Jianfeng Chen"
 __copyright__ = "Copyright (C) 2016 Jianfeng Chen"
@@ -66,6 +65,7 @@ def add_to_bin(attribute_names,
             others.append(other_col)
 
     classes = zip(*try2add_data_matrix)[attribute_names.index(objective_attr)]
+    obj = classes[:]
     other_classes = zip(*passing_bin[1:])[attribute_names.index(objective_attr)] if len(passing_bin) > 2 else []
     classes = map(toolkit.str2num, classes)
     other_classes = map(toolkit.str2num, other_classes)
@@ -131,24 +131,25 @@ def add_to_bin(attribute_names,
         return passing_bin
 
     cache_data = [my[i] for i in cache]
+    cache_obj  = [obj[i] for i in cache]
     cache_data = MORPH.simplify_morph(cache_data+others, morph_alpha, morph_beta)[:len(cache_data)]
 
-    # rescale the objective col
-    tmp = [toolkit.str2num(i[attribute_names.index(objective_attr)]) for i in try2add_data_matrix]
-    m, M = min(tmp), max(tmp)
+    # # rescale the objective col
+    # tmp = [toolkit.str2num(i[attribute_names.index(objective_attr)]) for i in try2add_data_matrix]
+    # m, M = min(tmp), max(tmp)
 
-    tmp = [m+(i-a)*(M-m)/(b-a) for i in zip(*cache_data)[-1]]
-    if type(m) is int:
-        tmp = map(lambda x: int(x), tmp)
-    else:
-        tmp = map(lambda x: round(x, 4), tmp)
+    # tmp = [m+(i-a)*(M-m)/(b-a) for i in zip(*cache_data)[-1]]
+    # if type(m) is int:
+    #     tmp = map(lambda x: int(x), tmp)
+    # else:
+    #     tmp = map(lambda x: round(x, 4), tmp)
 
     for at, i in enumerate(cache):
         h = try2add_data_matrix[i]
         new = cache_data[at]
         new2 = [func(d) for func, d in zip(denorm_funcs, new)]
         new = new2
-        c = tmp[at]
+        c = cache_obj[at]
 
         row = list()
         new_c = 0
