@@ -9,8 +9,15 @@ LACE
         :target: https://pypi.python.org/pypi/LACE
 
 
- Lace-scale Assurance of Confidentiality Environment
+ Lace-scale Assurance of Confidentiality Environment                                                               
+* Free software: MIT license
+* Documentation: http://lace.readthedocs.io/en/latest/readme.html
+* Algorithm design: `Dr. Fayola Peters <http://www.fayolapeters.com/>`_ @ Univ of Limerick, Ireland
+* Package development: `Jianfeng Chen <http://www4.ncsu.edu/~jchen37>`_ @ NC State Univ, United States
 
+
+What is LACE?
+-------------
  __         ______    ______   ________ 
 |  \       /      \  /      \ |        \
 | $$      |  $$$$$$\|  $$$$$$\| $$$$$$$$
@@ -21,17 +28,7 @@ LACE
 | $$     \| $$  | $$ \$$    $$| $$     \
  \$$$$$$$$ \$$   \$$  \$$$$$$  \$$$$$$$$
                                         
-                                        
-                                        
-                                        
-* Free software: MIT license
-* Documentation: http://lace.readthedocs.io/en/latest/readme.html
-* Algorithm design: `Dr. Fayola Peters <http://www.fayolapeters.com/>`_ @ Univ of Limerick, Ireland
-* Package development: `Jianfeng Chen <http://www4.ncsu.edu/~jchen37>`_ @ NC State Univ, United States
-
-
-What is LACE?
--------------
+                            
 LACE, or Large-scale Assurance Configuration Environment, was firsed introduced by Dr. Peters in ICSE2013. In a short, LACE is a data preprocess algorithm. It can help user to remove the sensitive information and implicit association rules inside the date sets, while keep the utility of the data sets, typically for machine learning or big data mining. In our published articiles, we used the data to train learning models and do the prediction.
 
 There are two versions of LACE at this time. The first version, or *lace1* is constructed by two parts-- CLIFF and MORPH. *CLIFF* is to find the most valuable subset among the dataset. *MORPH* is to "shake" the data so that someone else can not reveal the original data and remove the implicit association rules among the attributes.
