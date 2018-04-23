@@ -11,6 +11,19 @@ LACE
 
  Lace-scale Assurance of Confidentiality Environment
 
+ __         ______    ______   ________ 
+|  \       /      \  /      \ |        \
+| $$      |  $$$$$$\|  $$$$$$\| $$$$$$$$
+| $$      | $$__| $$| $$   \$$| $$__    
+| $$      | $$    $$| $$      | $$  \   
+| $$      | $$$$$$$$| $$   __ | $$$$$   
+| $$_____ | $$  | $$| $$__/  \| $$_____ 
+| $$     \| $$  | $$ \$$    $$| $$     \
+ \$$$$$$$$ \$$   \$$  \$$$$$$  \$$$$$$$$
+                                        
+                                        
+                                        
+                                        
 * Free software: MIT license
 * Documentation: http://lace.readthedocs.io/en/latest/readme.html
 * Algorithm design: `Dr. Fayola Peters <http://www.fayolapeters.com/>`_ @ Univ of Limerick, Ireland
